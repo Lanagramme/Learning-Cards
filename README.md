@@ -17,13 +17,13 @@ Delayed repetition tool and knowledge tracker
 ## Life Cycle
 
 1. _Choose_ a **deck**
-2. _Pick a random_ **cards**
+2. _Pick a random_ **card**
    - _Lire_ **card** **question**
    - _Donner_ **answer**
    - Si bonne **answer**, _add_ **tally**
-     - Si 3 **tally**, **stack** +1
+     - Si 3 **tally**, **stack_level** +1
    - Si mauvaise réponse **remove** 2 **tallys**
-     - Si 0 **tally**, **stack** -1
+     - Si 0 **tally**, **stack_level** -1
 3. Ts ls 5 **cards** du **stack** 1 _lire_ une **card** du **stack** 2
 4. Ts ls 3 **cards** du **stack** 2 _lire_ une **card** du **stack** 3
 
@@ -49,16 +49,17 @@ Delayed repetition tool and knowledge tracker
 
 ## Tasks
 
-- [ ] Create card
-- [ ] Pick a random cards in deck
+- [ ] Choisir un deck
+- [ ] Choisir une carte au hasard
 
 - [ ] Lire question
-- [ ] QCM
-- [ ] Donner answer
+- [ ] Donner réponse
+- [ ] vérifier réponse (**test waiting**)
 
-- [x] Add Tally
-- [ ] Remove tally_count
-- [ ] Increase stack_level
+- [ ] Increase tally_count (**test waiting**)
+- [ ] Decrease tally_count (**test waiting**)
+- [ ] Increase stack_level (**test waiting**)
+- [ ] Decrease stack_level (**test waiting**)
 
 - [x] Save data
 - [x] Load data
