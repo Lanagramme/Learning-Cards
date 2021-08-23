@@ -56,7 +56,7 @@ Delayed repetition tool and knowledge tracker
 - [ ] QCM
 - [ ] Donner answer
 
-- [ ] Add Tally
+- [x] Add Tally
 - [ ] Remove tally_count
 - [ ] Increase stack_level
 
