@@ -3,11 +3,37 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="wwscale=1.0" />
+		<link rel="stylesheet" href="./css/styles.css" />
 		<title>Document</title>
 	</head>
 	<body>
-		Hello World !
+		<div>
+			<form id="ask">
+				<div class="text-center">
+					<label for="ask_question">Question</label>
+					<input type="text" name="ask_question" id="ask_question" />
+				</div>
+				<div class="text-center">
+					<label for="ask_reponse">Réponse</label>
+					<input name="ask_reponse" id="ask_reponse" />
+				</div>
+				<button class="btn">Ok</button>
+			</form>
+
+			<button id="serge">Serve</button>
+
+			<form id="give">
+				<div class="text-center">
+					<p id="give_question" class=""></p>
+				</div>
+				<div class="text-center">
+					<label for="give_reponse">Réponse</label>
+					<input name="give_reponse" id="give_reponse" />
+				</div>
+				<button class="btn">Ok</button>
+			</form>
+		</div>
 		<script src="JS/jquery-3.6.0.js"></script>
 		<script src="JS/index.js"></script>
 	</body>

@@ -49,18 +49,24 @@ Delayed repetition tool and knowledge tracker
 
 ## Tasks
 
-- [ ] Choisir un deck
-- [ ] Choisir une carte au hasard
+**Sprint n°1**
 
-- [ ] Lire question
-- [ ] Donner réponse
-- [ ] vérifier réponse (**test waiting**)
+- [x] Choisir une carte au hasard
 
-- [ ] Increase tally_count (**test waiting**)
-- [ ] Decrease tally_count (**test waiting**)
-- [ ] Increase stack_level (**test waiting**)
-- [ ] Decrease stack_level (**test waiting**)
+- [x] Lire question
+- [x] Donner réponse
+- [x] vérifier réponse
+
+- [x] Increase tally_count
+- [x] Decrease tally_count
+- [x] Increase stack_level
+- [x] Decrease stack_level
 
 - [x] Save data
 - [x] Load data
-- [ ] Update card data
+
+**Sprint n°2**
+
+- [ ] Afficher le tally et le stack de chaque carte sous la question
+- [ ] Afficher le nombre de carte dans chaque stack
+- [ ] Auto scroll les stacks
