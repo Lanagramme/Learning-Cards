@@ -2,17 +2,25 @@
 
 ## Description
 
-Delayed repetition tool and knowledge tracker
+Outil d'aide à l'apprentissage et aux révisions, basé sur les recherches actuelles en psychologie cognitive.
 
-- système de cartes de savoir
+Mots clés:
 
-  - question
-  - réponse
+- Apprentissage
+- Delayed repetition
+- Flash card
 
-- 3 Stasks
+## Features:
+
+- système de **cartes** de savoir : les information sont présentées sous formes de flash-card (Question / Réponse)
+- Les _cartes_ sont triées par themes appelés **tags**
+- Les _cartes_ sont tirée aléatoirement selon des critères selectionnables afin de former un **deck**
+- Durans la cession, en fonction des réponses de l'utilisateur, les _cartes_ seront triées dans **Stasks**
+- Les trois stacks sont :
   1.  Inconnu
   2.  Peu connu
   3.  Connu
+- Les questions sont posées à la chaine, en priorisant celles avec lesquelles l'utilisateur à du mal
 
 ## Life Cycle
 
@@ -31,9 +39,9 @@ Delayed repetition tool and knowledge tracker
 
 - Limite de card par deck
 - Tri cards par theme
-- Mode shuffle 25 card dans tous les themes
-- Contre la montre : faire passer tout le deck en stack 3
-- Mort subite : défaite après 5 mauvaises réponses
+- Mode "shuffle" : un deck 25 card tirées dans tous les themes
+- Mode "contre la montre" : faire passer tout le deck en stack 3 en un temps limité
+- mode "mort subite" : défaite après 5 mauvaises réponses
 - Donner un score : échec / réussites
 - QCM: prendre des réponses dans le meme deck comme leures
 
@@ -48,9 +56,6 @@ Delayed repetition tool and knowledge tracker
 - tally_count
 
 ## Tasks
-
-- [ ] Designer l'UI **(en cours)**
-- [ ] Equilibrage
 
 **Sprint n°1**
 
@@ -77,8 +82,16 @@ Delayed repetition tool and knowledge tracker
 
 **Sprint n°3**
 
+- [ ] Designer l'UI **(en cours)**
+
+**Sprint n°4**
+
 - [ ] Associer des tags aux cartes
 - [ ] Trier les cartes par tag
 - [ ] Créer des deck par filtre de tags
 - [ ] Placer une limite sur le nombre de cartes dans un deck
 - [ ] Page edition de deck
+
+**Sprint n°5**
+
+- [ ] Equilibrage
