@@ -49,6 +49,9 @@ Delayed repetition tool and knowledge tracker
 
 ## Tasks
 
+- [ ] Designer l'UI **(en cours)**
+- [ ] Equilibrage
+
 **Sprint n°1**
 
 - [x] Choisir une carte au hasard
@@ -67,13 +70,15 @@ Delayed repetition tool and knowledge tracker
 
 **Sprint n°2**
 
-- [ ] Afficher le tally et le stack de chaque carte sous la question
-- [ ] Afficher le nombre de carte dans chaque stack
-- [ ] Auto scroll les stacks
+- [x] Afficher le tally et le stack de chaque carte sous la question
+- [x] Afficher le nombre de carte dans chaque stack
+- [x] Auto scroll les stacks
+- [x] Afficher toutes les cartes
 
-**Sprint n°2**
+**Sprint n°3**
 
 - [ ] Associer des tags aux cartes
 - [ ] Trier les cartes par tag
 - [ ] Créer des deck par filtre de tags
 - [ ] Placer une limite sur le nombre de cartes dans un deck
+- [ ] Page edition de deck

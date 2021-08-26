@@ -40,22 +40,108 @@ class Card {
 			return false
 		}
 	}
+	pass() {
+		this.check_answer(this.reponse)
+	}
 }
 
-const Cards = []
+const Cards = [],
+	cl = console.log,
+	afficher_toutes_les_cartes = () => {
+		const toutes_les_cartes = document.querySelector("#toutes_les_cartes")
+
+		toutes_les_cartes.innerHTML = ""
+
+		for (let carte of Cards) {
+			toutes_les_cartes.insertAdjacentHTML(
+				"beforeend",
+				`<div class="centered border p-3 my-3 mx-auto rounded carte-question-show">
+					<div class="card-field m-0">
+						<label class="font-weight-bold">Question :</label>
+						<p>${carte.question}</p>
+						<label class="font-weight-bold">Réponse :</label>
+						<p>${carte.reponse}</p>
+					</div>
+				</div>`
+			)
+		}
+	},
+	getStack = (numero_stack, deck = Cards) => {
+		return deck.filter(carte => carte.stack == numero_stack)
+	},
+	poseQuestion = (debug = 0) => {
+		// === l'option debug permet de décider du stack à utiliser ===
+
+		// === afficher la taille des stacks ===
+		for (let compteur_stack = 1; compteur_stack <= 3; compteur_stack++) {
+			$(`#stack_${compteur_stack}`).html(getStack(compteur_stack).length)
+		}
+
+		// === choisir le stack approprié en fonction du cycle===
+		if (!debug) {
+			/*
+
+				* toutes les 5 cycles, si le stack_3 contiens cartes, 
+			 		ou n'importe quelle tour où le stack_1 et le stack_2 sont vide :
+					==> utiliser le stack_3
+				* toutes les 3 cycles, si le stack_2 contiens des cartes;
+					ou n'importe quelle tour où le stack_1 est vide :
+					==>	utiliser le stack_2
+				* toutes les autre cycles, utiliser le stack_1	
+				
+				
+			 */
+			if (
+				(cycle % 5 == 0 && getStack(3).length) ||
+				(!getStack(2).length && !getStack(1).length)
+			) {
+				stack_actuel = getStack(3)
+				$(".active").removeClass("active")
+				$("#stack_3").closest("p").addClass("active")
+			} else if (
+				(cycle % 3 == 0 && getStack(2).length) ||
+				!getStack(1).length
+			) {
+				stack_actuel = getStack(2)
+				$(".active").removeClass("active")
+				$("#stack_2").closest("p").addClass("active")
+			} else {
+				stack_actuel = getStack(1)
+				$(".active").removeClass("active")
+				$("#stack_1").closest("p").addClass("active")
+			}
+		} else stack_actuel = getStack(debug)
+
+		// === choisir une carte random du stack en cours ===
+		carte = stack_actuel[Math.floor(Math.random() * stack_actuel.length)]
+
+		// === Poser la question de la carte en cours ===
+		document.querySelector("#repondre_question").className = carte.id
+		$("#repondre_question").html(carte.question)
+		$("#question_id").html(carte.id)
+		$("#deck_length").html(Cards.length)
+		$("#carte_tally").html(carte.tally)
+		$("#carte_level").html(
+			carte.stack == 1 ? "Inconnu" : carte.stack == 2 ? "Peu connu" : "Connu"
+		)
+		if (cycle < 10) cycle += 1
+		else cycle = 1
+	}
+
+let cycle = 1
 
 $.ajax({
 	type: "GET",
 	url: "/data/all",
 }).done(res => {
 	for (i of JSON.parse(res)) {
-		console.log(i)
 		if (typeof i == "object" && i.id) {
 			carte = new Card()
 			Object.assign(carte, i)
 			Cards.push(carte)
 		}
 	}
+	// afficher_toutes_les_cartes()
 })
 
 $("form#ask").submit(e => {
@@ -67,9 +153,11 @@ $("form#ask").submit(e => {
 			return
 		}
 		carte[i] = $(`#ask_${i}`).val().trim()
+		!$(`#ask_${i}`).val("")
 	}
 
 	Cards.push(carte)
+	// afficher_toutes_les_cartes()
 
 	$.ajax({
 		type: "POST",
@@ -80,34 +168,47 @@ $("form#ask").submit(e => {
 	})
 })
 
-$("form#give").submit(e => {
+$("form#repondre").submit(e => {
 	e.preventDefault()
 
-	const reponse = document.querySelector("#give_question"),
+	const reponse = document.querySelector("#repondre_question"),
 		carte = Cards.find(x => x.id == reponse.className)
-	console.log(carte.reponse)
-	if (carte.check_answer($("#give_reponse").val())) alert("bonne réponse")
+	if (carte.check_answer($("#repondre_reponse").val())) alert("bonne réponse")
 	else alert("Faux. La bonne réponse était: " + carte.reponse)
+	$("#repondre_reponse").val("")
+	$("#serge").click()
 })
+
+$("#show").click(e => afficher_toutes_les_cartes())
 
 good_test = () => {
 	Cards[0].check_answer(42)
-	console.log("tally: ", Cards[0].tally)
-	console.log("stack: ", Cards[0].stack)
+	cl(`tally: ${Cards[0].tally}, stack: ${Cards[0].stack}`)
 }
 bad_test = () => {
 	Cards[0].check_answer(4)
-	console.log("tally: ", Cards[0].tally)
-	console.log("stack: ", Cards[0].stack)
+	cl(`tally: ${Cards[0].tally}, stack: ${Cards[0].stack}`)
 }
 
 $("#serge").click(e => {
-	const index = Math.floor(Math.random() * Cards.length),
-		carte = Cards[index]
-	console.log(index)
-	console.log(Cards[index].id)
-	console.log(Cards[index].question)
-
-	document.querySelector("#give_question").className = Cards[index].id
-	document.querySelector("#give_question").innerHTML = Cards[index].question
+	poseQuestion()
+	afficher($("#page_2"))
 })
+
+$("#show").click(e => {
+	poseQuestion()
+	afficher($("#page_3"))
+})
+
+$(".terminer").click(e => afficher($("#page_1")))
+
+function pass() {
+	$("#repondre_reponse").val(carte.reponse)
+	$("form#repondre").submit()
+	cl(cycle, getStack(1).length, getStack(2).length, getStack(3).length)
+}
+
+function afficher(target) {
+	$(".page").addClass("hidden")
+	target.removeClass("hidden")
+}

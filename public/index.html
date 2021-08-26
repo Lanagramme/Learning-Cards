@@ -3,37 +3,113 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="wwscale=1.0" />
-		<link rel="stylesheet" href="./css/styles.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
 		<title>Document</title>
 	</head>
 	<body>
-		<div>
-			<form id="ask">
-				<div class="text-center">
-					<label for="ask_question">Question</label>
-					<input type="text" name="ask_question" id="ask_question" />
-				</div>
-				<div class="text-center">
-					<label for="ask_reponse">Réponse</label>
-					<input name="ask_reponse" id="ask_reponse" />
-				</div>
-				<button class="btn">Ok</button>
-			</form>
+		<main class="border-primary">
+			<div id="page_1" class="page display absolute no_inset">
+				<div></div>
 
-			<button id="serge">Serve</button>
+				<form id="ask" class="centered">
+					<h3>Ajouter une question</h3>
+					<div class="form-group">
+						<label for="ask_question">Question</label>
+						<input
+							id="ask_question"
+							class="form-control"
+							type="text"
+							name="ask_question"
+							aria-describedby="Question"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="ask_reponse">Réponse</label>
+						<input
+							id="ask_reponse"
+							class="form-control"
+							type="text"
+							name="ask_reponse"
+							aria-describedby="Réponse"
+						/>
+					</div>
+					<div class="form-group d-flex">
+						<button type="submit" class="btn btn-primary mx-auto px-4">
+							Ajouter
+						</button>
+					</div>
+				</form>
 
-			<form id="give">
-				<div class="text-center">
-					<p id="give_question" class=""></p>
+				<div class="form-group d-flex">
+					<button class="btn btn-success mx-auto px-4" id="serge">
+						Quizz !!
+					</button>
+					<button class="btn btn-warning mx-auto px-4" id="show">
+						Afficher toutes les questions
+					</button>
 				</div>
-				<div class="text-center">
-					<label for="give_reponse">Réponse</label>
-					<input name="give_reponse" id="give_reponse" />
+			</div>
+
+			<div id="page_2" class="page display absolute no_inset m-3 hidden">
+				<div class="d-flex justify-content-between">
+					<button class="btn btn-danger px-4 terminer">Terminer</button>
+					<p><span id="deck_length">0</span> Cartes dans ce deck</p>
 				</div>
-				<button class="btn">Ok</button>
-			</form>
-		</div>
+
+				<form id="repondre" class="card-field">
+					<h3 class="text-center">Question #<span id="question_id"></span></h3>
+					<div class="form-group">
+						<label for="ask_question">Question</label>
+						<p id="repondre_question"></p>
+					</div>
+					<div class="form-group">
+						<label for="repondre_reponse">Réponse :</label>
+						<input
+							id="repondre_reponse"
+							class="form-control"
+							type="text"
+							name="repondre_reponse"
+							aria-describedby="Réponse"
+						/>
+					</div>
+					<p>
+						Tally: <span id="carte_tally">0</span>
+						<!-- Level: <span id="carte_level">0</span> -->
+					</p>
+					<div class="form-group d-flex">
+						<button type="submit" class="btn btn-primary mx-auto px-3">
+							Ok
+						</button>
+					</div>
+				</form>
+
+				<div class="row m-3">
+					<div class="col centered">
+						<p><span id="stack_1">0</span> Inconnu</p>
+					</div>
+					<div class="col centered border-left">
+						<p><span id="stack_2">0</span> Peu connu</p>
+					</div>
+					<div class="col centered border-left">
+						<p><span id="stack_3">0</span> Connu</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="page_3" class="page hidden">
+				<div class="">
+					<button class="btn btn-danger px-4 terminer">Terminer</button>
+				</div>
+				<div id="toutes_les_cartes"></div>
+			</div>
+		</main>
 		<script src="JS/jquery-3.6.0.js"></script>
 		<script src="JS/index.js"></script>
 	</body>

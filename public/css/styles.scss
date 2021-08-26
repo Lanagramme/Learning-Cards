@@ -1,0 +1,77 @@
+.active {
+	background-color: hotpink;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	min-height: 90vh;
+	margin: 5vh 10px;
+	padding: 20px;
+
+	border: 2px solid;
+	border-radius: 20px;
+	position: relative;
+}
+
+.d-grid {
+	display: grid;
+}
+button {
+	min-width: 90px;
+	padding: 1em;
+}
+
+.centered {
+	display: grid;
+	place-items: center;
+
+	.form-group {
+		width: 700px;
+
+		@media screen and (max-width: 830px) {
+			width: 100%;
+		}
+	}
+}
+
+.carte-question-show {
+	max-width: 848px;
+	margin: auto;
+}
+.card-field {
+	margin: auto;
+	width: 700px;
+
+	@media screen and (max-width: 830px) {
+		width: 100%;
+	}
+}
+
+.display {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.hidden {
+	display: none;
+}
+
+#ask {
+	place-self: center;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.no_inset {
+	inset: 0;
+}

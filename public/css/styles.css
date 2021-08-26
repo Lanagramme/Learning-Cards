@@ -1,1 +1,87 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+.active {
+  background-color: hotpink;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  min-height: 90vh;
+  margin: 5vh 10px;
+  padding: 20px;
+  border: 2px solid;
+  border-radius: 20px;
+  position: relative;
+}
+
+.d-grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+button {
+  min-width: 90px;
+  padding: 1em;
+}
+
+.centered {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.centered .form-group {
+  width: 700px;
+}
+
+@media screen and (max-width: 830px) {
+  .centered .form-group {
+    width: 100%;
+  }
+}
+
+.carte-question-show {
+  max-width: 848px;
+  margin: auto;
+}
+
+.card-field {
+  margin: auto;
+  width: 700px;
+}
+
+@media screen and (max-width: 830px) {
+  .card-field {
+    width: 100%;
+  }
+}
+
+.display {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+}
+
+.hidden {
+  display: none;
+}
+
+#ask {
+  place-self: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.no_inset {
+  inset: 0;
+}
+/*# sourceMappingURL=styles.css.map */
