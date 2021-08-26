@@ -27,23 +27,21 @@ Mots clés:
 1. _Choose_ a **deck**
 2. _Pick a random_ **card**
    - _Lire_ **card** **question**
-   - _Donner_ **answer**
-   - Si bonne **answer**, _add_ **tally**
-     - Si 3 **tally**, **stack_level** +1
-   - Si mauvaise réponse **remove** 2 **tallys**
-     - Si 0 **tally**, **stack_level** -1
+   - _Give_ **answer**
+   - Si good **answer**, **tally** +1
+     - Si 5 **tally**, **stack_level** +1
+   - Si bad **answer**, **tallys** -2
+     - Si **tally** < 1, **stack_level** -1 & tally = 3
 3. Ts ls 5 **cards** du **stack** 1 _lire_ une **card** du **stack** 2
 4. Ts ls 3 **cards** du **stack** 2 _lire_ une **card** du **stack** 3
 
 ## Améliorations
 
-- Limite de card par deck
-- Tri cards par theme
+- Mode "QCM" : prendre des réponses dans le meme deck comme leures
 - Mode "shuffle" : un deck 25 card tirées dans tous les themes
-- Mode "contre la montre" : faire passer tout le deck en stack 3 en un temps limité
 - mode "mort subite" : défaite après 5 mauvaises réponses
-- Donner un score : échec / réussites
-- QCM: prendre des réponses dans le meme deck comme leures
+- Mode "contre la montre" : faire passer tout le deck en stack 3 en un temps limité
+- Donner un score : échec / réussites par carte ou par deck
 
 ## Objects
 
