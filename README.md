@@ -79,6 +79,7 @@ Mots clés:
 - [x] Afficher le nombre de carte dans chaque stack
 - [x] Auto scroll les stacks
 - [x] Afficher toutes les cartes
+- [x] Mise en place du code de logique des quizz
 
 **Sprint n°3**
 
