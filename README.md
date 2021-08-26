@@ -87,11 +87,12 @@ Mots clés:
 **Sprint n°4**
 
 - [ ] Associer des tags aux cartes
-- [ ] Trier les cartes par tag
-- [ ] Créer des deck par filtre de tags
-- [ ] Placer une limite sur le nombre de cartes dans un deck
-- [ ] Page edition de deck
+- [ ] Ajouter options de tri
+- [ ] Créer des deck
+- [ ] Créer des deck (automatiquement)
 
 **Sprint n°5**
 
+- [ ] Page edition de deck
+- [ ] Page CRUD
 - [ ] Equilibrage
