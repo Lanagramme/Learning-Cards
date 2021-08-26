@@ -97,18 +97,18 @@ const Cards = [],
 			) {
 				stack_actuel = getStack(3)
 				$(".active").removeClass("active")
-				$("#stack_3").closest("p").addClass("active")
+				$("#stack_3").closest(".col").addClass("active")
 			} else if (
 				(cycle % 3 == 0 && getStack(2).length) ||
 				!getStack(1).length
 			) {
 				stack_actuel = getStack(2)
 				$(".active").removeClass("active")
-				$("#stack_2").closest("p").addClass("active")
+				$("#stack_2").closest(".col").addClass("active")
 			} else {
 				stack_actuel = getStack(1)
 				$(".active").removeClass("active")
-				$("#stack_1").closest("p").addClass("active")
+				$("#stack_1").closest(".col").addClass("active")
 			}
 		} else stack_actuel = getStack(debug)
 
@@ -173,7 +173,7 @@ $("form#repondre").submit(e => {
 
 	const reponse = document.querySelector("#repondre_question"),
 		carte = Cards.find(x => x.id == reponse.className)
-	if (carte.check_answer($("#repondre_reponse").val())) alert("bonne réponse")
+	if (carte.check_answer($("#repondre_reponse").val())) alert("Bonne réponse")
 	else alert("Faux. La bonne réponse était: " + carte.reponse)
 	$("#repondre_reponse").val("")
 	$("#serge").click()
