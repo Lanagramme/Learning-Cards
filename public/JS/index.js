@@ -19,8 +19,7 @@ class Card {
 		if (this.tally > 3) {
 			this._tally = 0
 			this.stack = 1
-		}
-		if (this.tally < 0) {
+		} else if (this.tally < 0) {
 			this._tally = 2
 			this.stack = -1
 		}
@@ -28,7 +27,7 @@ class Card {
 	set stack(x) {
 		this._stack += x
 		if (this.stack >= 3) this._stack = 3
-		if (this.stack < 1) this._stack = 1
+		else if (this.stack < 1) this._stack = 1
 	}
 
 	check_answer(x) {
@@ -80,7 +79,6 @@ const Cards = [],
 		// === choisir le stack approprié en fonction du cycle===
 		if (!debug) {
 			/*
-
 				* toutes les 5 cycles, si le stack_3 contiens cartes, 
 			 		ou n'importe quelle tour où le stack_1 et le stack_2 sont vide :
 					==> utiliser le stack_3
@@ -88,9 +86,7 @@ const Cards = [],
 					ou n'importe quelle tour où le stack_1 est vide :
 					==>	utiliser le stack_2
 				* toutes les autre cycles, utiliser le stack_1	
-				
-				
-			 */
+			*/
 			if (
 				(cycle % 5 == 0 && getStack(3).length) ||
 				(!getStack(2).length && !getStack(1).length)
@@ -126,10 +122,30 @@ const Cards = [],
 		)
 		if (cycle < 10) cycle += 1
 		else cycle = 1
+	},
+	pass = () => {
+		$("#repondre_reponse").val(carte.reponse)
+		$("form#repondre").submit()
+		cl(cycle, getStack(1).length, getStack(2).length, getStack(3).length)
+	},
+	afficher = target => {
+		$(".page").addClass("hidden")
+		target.removeClass("hidden")
+	},
+	good_test = () => {
+		Cards[0].check_answer(42)
+		cl(`tally: ${Cards[0].tally}, stack: ${Cards[0].stack}`)
+	},
+	bad_test = () => {
+		Cards[0].check_answer(4)
+		cl(`tally: ${Cards[0].tally}, stack: ${Cards[0].stack}`)
 	}
 
 let cycle = 1
 
+// ========================================
+//					Executions démarage
+// ========================================
 $.ajax({
 	type: "GET",
 	url: "/data/all",
@@ -144,6 +160,9 @@ $.ajax({
 	// afficher_toutes_les_cartes()
 })
 
+// ========================================
+//						Event Listeners
+// ========================================
 $("form#ask").submit(e => {
 	e.preventDefault()
 	const carte = new Card()
@@ -167,10 +186,8 @@ $("form#ask").submit(e => {
 		},
 	})
 })
-
 $("form#repondre").submit(e => {
 	e.preventDefault()
-
 	const reponse = document.querySelector("#repondre_question"),
 		carte = Cards.find(x => x.id == reponse.className)
 	if (carte.check_answer($("#repondre_reponse").val())) alert("Bonne réponse")
@@ -179,36 +196,13 @@ $("form#repondre").submit(e => {
 	$("#serge").click()
 })
 
-$("#show").click(e => afficher_toutes_les_cartes())
-
-good_test = () => {
-	Cards[0].check_answer(42)
-	cl(`tally: ${Cards[0].tally}, stack: ${Cards[0].stack}`)
-}
-bad_test = () => {
-	Cards[0].check_answer(4)
-	cl(`tally: ${Cards[0].tally}, stack: ${Cards[0].stack}`)
-}
-
 $("#serge").click(e => {
 	poseQuestion()
 	afficher($("#page_2"))
 })
-
 $("#show").click(e => {
 	poseQuestion()
 	afficher($("#page_3"))
 })
-
+$("#show").click(e => afficher_toutes_les_cartes())
 $(".terminer").click(e => afficher($("#page_1")))
-
-function pass() {
-	$("#repondre_reponse").val(carte.reponse)
-	$("form#repondre").submit()
-	cl(cycle, getStack(1).length, getStack(2).length, getStack(3).length)
-}
-
-function afficher(target) {
-	$(".page").addClass("hidden")
-	target.removeClass("hidden")
-}
