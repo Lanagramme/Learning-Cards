@@ -58,7 +58,7 @@ async function read_data(filePath) {
 }
 
 async function write_data(filePage) {
-	return new promise(resove => {
+	return new Promise(resove => {
 		fs.writeFile(FILE, JSON.stringify(data), (err) => {
 			if (err) resolve( err )
 			resolve(  "success" )
