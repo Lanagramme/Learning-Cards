@@ -109,6 +109,7 @@ const Cards = [],
 		} else stack_actuel = getStack(debug)
 
 		// === choisir une carte random du stack en cours ===
+		console.log(stack_actuel)
 		carte = stack_actuel[Math.floor(Math.random() * stack_actuel.length)]
 
 		// === Poser la question de la carte en cours ===
