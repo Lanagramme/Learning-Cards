@@ -31,7 +31,7 @@ class Card {
 	}
 
 	check_answer(x) {
-		if (x == this.reponse) {
+		if (x == this.reponse.trim().toLowerCase()) {
 			this.tally = 1
 			return true
 		} else {
